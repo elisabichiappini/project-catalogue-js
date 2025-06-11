@@ -16,6 +16,27 @@
     color: white;
 }
 
+#footer-top ul {
+    color: white;
+    padding: 32px 0;
+    
+}
+
+#footer-top ul > li {
+width: calc(100% / 1);
+text-align: center;
+}
+
+#footer-top img {
+    width: 200px;
+    display: block;
+    
+}
+
+
+
+
+
 @media screen and (min-width: 576px) {
     .card-product{
         width: calc(100% / 2);

@@ -30,9 +30,9 @@
     text-align: center;
 }
 
-/* .bg-secondary {
-    background-color: antiquewhite;
-} */
+.bg-secondary {
+    background-color: white;
+}
 
 .flex-column {
     flex-direction: column;
@@ -44,4 +44,12 @@
 
 .m-32 {
     padding: 32px 16px;
+}
+
+.bg-dark {
+    background-color: black;
+}
+
+.justify-content-center{
+    justify-content: center;
 }
