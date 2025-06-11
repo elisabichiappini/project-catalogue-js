@@ -23,10 +23,25 @@
     gap: 8px;
 }
 
+.p-8 {
+    padding: 8px;
+}
 .text-center {
     text-align: center;
 }
 
-.bg-secondary {
+/* .bg-secondary {
     background-color: antiquewhite;
+} */
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.m-32 {
+    padding: 32px 16px;
 }
