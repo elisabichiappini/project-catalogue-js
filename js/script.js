@@ -175,7 +175,7 @@ buttonShow.addEventListener('click', function() {
 
 navLinks.forEach(element => {
     let liElement = document.createElement("li");
-    liElement.classList='link';
+    liElement.classList.add('link');
     let aElement = document.createElement("a");
     aElement.innerText = element.linkName;
     aElement.href = element.url;
@@ -215,8 +215,7 @@ productCatalog.forEach(element => {
     buttonCart.addEventListener('click', function() {
         const id = parseInt(this.dataset.id);
         addToCart(id);
-        sum(cart.length, id);
-        return console.log(sum, id);
+        updateItems();
     });
 })
 
@@ -226,13 +225,8 @@ const shopLink = navElement.querySelectorAll('.link:last-child a');
 
 const cartElement = document.getElementById("shopping-cart");
 
-cart.forEach(element => {
-    cartElement.innerText = element.length;
-    console.log(countItems);
-})
 
-
-function sum(a, b) {
-    return a + b;
+function updateItems() {
+    const counter = document.getElementById("count-items");
+    counter.innerText = cart.length;
 }
-

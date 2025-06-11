@@ -60,10 +60,10 @@
     background-color: white;
     cursor: crosshair;
     transition: all 1s ease;
+    box-sizing: content-box;
 }
 
 .btn:hover {
-    border: #000 1px solid;
     background-color: rgb(0, 0, 0);
     color: white;
 }
