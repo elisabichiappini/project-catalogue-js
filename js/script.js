@@ -147,11 +147,14 @@ let cart = [];
 let active = false;
 const buttonShow = document.getElementById("show-button");
 buttonShow.addEventListener('click', function() {
-    if(active === false) {
-        catalogue.classList.toggle("d-none");
-        return console.log('falso');
+    if(active !== false) {
+        catalogue.classList.remove("d-none");
+        buttonShow.innerText = 'Hide All';
+        return active = false;
     } else { 
-        return console.log('vero');
+        buttonShow.innerText = 'Show All';
+        catalogue.classList.add("d-none");
+        return active = true;;
     }
 });
 
