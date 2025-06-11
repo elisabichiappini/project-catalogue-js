@@ -1,5 +1,6 @@
 'use strict';
 
+/*VARIABILI*/
 let navLinks = [
     {
         linkName: "home",
@@ -22,8 +23,6 @@ let navLinks = [
         url: "./carrello.html"
     },
 ]
-
-let cart = [];
 const productCatalog = [
     {
         id: 1,
@@ -36,12 +35,12 @@ const productCatalog = [
             { name: "Black", hex: "#000000" }
         ],
         inStock: true,
-        description: "A classic fit white t-shirt made from 100% organic cotton.",
+        description: "Vestito con texture a palloncino.",
         path: "./assets/img/01.png"
     },
     {
         id: 2,
-        name: "Denim Jeans",
+        name: "Camicia rosa",
         category: "Bottoms",
         price: 49.99,
         sizes: ["28", "30", "32", "34", "36"],
@@ -50,12 +49,12 @@ const productCatalog = [
             { name: "Light Blue", hex: "#8CBED6" }
         ],
         inStock: true,
-        description: "Slim fit stretch denim jeans with 5 pockets.",
+        description: "Camicia a righe misto lino.",
         path: "./assets/img/02.png"
     },
     {
         id: 3,
-        name: "Running Sneakers",
+        name: "Bermuda Beage",
         category: "Footwear",
         price: 89.99,
         sizes: ["40", "41", "42", "43", "44", "45"],
@@ -64,12 +63,12 @@ const productCatalog = [
             { name: "Black", hex: "#000000" }
         ],
         inStock: false,
-        description: "Lightweight and comfortable sneakers designed for running.",
+        description: "Bermuda a vita alta in lino.",
         path: "./assets/img/03.png"
     },
     {
         id: 4,
-        name: "Bomber Jacket",
+        name: "Bermuda Bianchi",
         category: "Outerwear",
         price: 109.99,
         sizes: ["M", "L", "XL"],
@@ -78,12 +77,12 @@ const productCatalog = [
             { name: "Navy", hex: "#000080" }
         ],
         inStock: true,
-        description: "Warm and stylish bomber jacket with zipper closure.",
+        description: "Bermuda a vita alta in lino.",
         path: "./assets/img/04.png"
     },
     {
         id: 5,
-        name: "Bomber Jacket",
+        name: "Bermuda Jeans",
         category: "Outerwear",
         price: 109.99,
         sizes: ["M", "L", "XL"],
@@ -92,7 +91,7 @@ const productCatalog = [
             { name: "Navy", hex: "#000080" }
         ],
         inStock: true,
-        description: "Warm and stylish bomber jacket with zipper closure.",
+        description: "Bermuda in demin TRF Paper Bag a vita alta.",
         path: "./assets/img/05.png"
     },
     {
@@ -140,9 +139,27 @@ const productCatalog = [
     },
     
 ];
-
 const ulListLink = document.getElementById('nav-links');
 ulListLink.className = "d-flex gap-8";
+const ulListProducts = document.getElementById('list-products');
+const catalogue = document.getElementById('product-catalogue');
+let cart = [];
+let active = false;
+const buttonShow = document.getElementById("show-button");
+buttonShow.addEventListener('click', function() {
+    if(active === false) {
+        catalogue.classList.toggle("d-none");
+        return console.log('falso');
+    } else { 
+        return console.log('vero');
+    }
+});
+
+
+
+
+/*OPERAZIONI*/ 
+
 
 navLinks.forEach(element => {
     let liElement = document.createElement("li");
@@ -150,11 +167,10 @@ navLinks.forEach(element => {
     aElement.innerText = element.linkName;
     aElement.href = element.url;
     aElement.title = element.title;
+    aElement.classList = "cursor";
     liElement.append(aElement);
     ulListLink.append(liElement);
 });
-
-const ulListProducts = document.getElementById('list-products');
 
 productCatalog.forEach(element => {
     let liElement = document.createElement("li");
@@ -178,4 +194,3 @@ productCatalog.forEach(element => {
     liElement.append(divElement);
     ulListProducts.append(liElement)
 })
-

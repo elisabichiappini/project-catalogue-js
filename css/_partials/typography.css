@@ -20,21 +20,3 @@ h2, h3 {
     font-style: normal;
 }
 
-header {
-    padding: 16px;
-    margin: 0 auto;
-    background-color: antiquewhite;
-}
-
-#header-top {
-    padding: 16px 32px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    color: white
-}
-#header-bottom {
-    height: 50vh;
-    object-fit: cover;
-}

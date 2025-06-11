@@ -8,6 +8,8 @@ li {
     list-style-type: none;
 }
 
-a {
+a, 
+button {
     all: unset;
 }
+
