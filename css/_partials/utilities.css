@@ -58,13 +58,11 @@
     margin: 16px 0px 48px;
     border: #000 1px solid;
     background-color: white;
-    padding: 8px;
     cursor: crosshair;
     transition: all 1s ease;
 }
 
 .btn:hover {
-    margin: 16px 0px 48px;
     border: #000 1px solid;
     background-color: rgb(0, 0, 0);
     color: white;
@@ -76,4 +74,9 @@
 
 .d-none {
     display: none;
+}
+
+.add-cart {
+    background-color: blue;
+
 }

@@ -173,6 +173,9 @@ navLinks.forEach(element => {
 });
 
 productCatalog.forEach(element => {
+    let buttonCart = document.createElement('button');
+    buttonCart.classList = 'add-cart text-center btn cursor';
+    buttonCart.innerHTML = '+';
     let liElement = document.createElement("li");
     let h3Element = document.createElement("h3");
     let pDesc = document.createElement("p");
@@ -189,6 +192,7 @@ productCatalog.forEach(element => {
     imgElement.classList = "img-fluid";
     liElement.append(h3Element);
     liElement.append(imgElement);
+    liElement.append(buttonCart);
     divElement.append(pDesc);
     divElement.append(pPrice);
     liElement.append(divElement);
