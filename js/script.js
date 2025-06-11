@@ -146,6 +146,22 @@ const catalogue = document.getElementById('product-catalogue');
 let cart = [];
 let active = false;
 const buttonShow = document.getElementById("show-button");
+
+
+/*FUNZIONI*/
+function addToCart(id) {
+    const product = productCatalog.find(element => element.id === id );
+    if(!product) {
+        return;
+    } else {
+        cart.push(product);
+        return cart;
+    }
+}
+
+
+
+/*OPERAZIONI*/ 
 buttonShow.addEventListener('click', function() {
     if(active !== false) {
         catalogue.classList.remove("d-none");
@@ -159,13 +175,9 @@ buttonShow.addEventListener('click', function() {
 });
 
 
-
-
-/*OPERAZIONI*/ 
-
-
 navLinks.forEach(element => {
     let liElement = document.createElement("li");
+    liElement.classList='link';
     let aElement = document.createElement("a");
     aElement.innerText = element.linkName;
     aElement.href = element.url;
@@ -179,6 +191,7 @@ productCatalog.forEach(element => {
     let buttonCart = document.createElement('button');
     buttonCart.classList = 'add-cart text-center btn cursor';
     buttonCart.innerHTML = '+';
+    buttonCart.dataset.id = element.id;
     let liElement = document.createElement("li");
     let h3Element = document.createElement("h3");
     let pDesc = document.createElement("p");
@@ -199,5 +212,26 @@ productCatalog.forEach(element => {
     divElement.append(pDesc);
     divElement.append(pPrice);
     liElement.append(divElement);
-    ulListProducts.append(liElement)
+    ulListProducts.append(liElement);
+
+    buttonCart.addEventListener('click', function() {
+        const id = parseInt(this.dataset.id);
+        addToCart(id);
+        console.log(id);
+        return console.log(cart);
+    });
+})
+
+const navElement = document.getElementById("nav-links");
+console.log(navElement);
+const shopLink = navElement.querySelectorAll('.link:last-child');
+console.log(shopLink.innerHTML)
+console.log(shopLink);
+
+const cartItems = document.getElementById("shopping-cart");
+console.log(cartItems);
+
+cart.forEach(element => {
+    const countItems = element.length;
+    console.log(countItems);
 })

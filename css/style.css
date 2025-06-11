@@ -15,7 +15,7 @@ header {
     top: 0;
     right: 0;
     left: 0;
-    color: white
+    color: black;
 }
 
 #header-bottom {
@@ -52,13 +52,13 @@ main {
 
 .card-product:hover {
     background-color: #fff;
-    color:black
+    color: black;
 }
 
 .add-cart{
     width: 100%;
     background-color: rgb(255, 255, 255);
-    border: 1px solid #000 inset;
+    /* border: 1px solid #000 inset; */
 }
 
 /* FOOTER */
