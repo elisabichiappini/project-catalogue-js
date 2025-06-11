@@ -1,0 +1,32 @@
+.d-flex{
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.img-fluid {
+    width: 100%;
+    display: block;
+}
+
+.img-logo {
+    width: 300px;
+}
+
+.gap-8 {
+    gap: 8px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-secondary {
+    background-color: antiquewhite;
+}
