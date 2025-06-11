@@ -146,7 +146,7 @@ const catalogue = document.getElementById('product-catalogue');
 let cart = [];
 let active = false;
 const buttonShow = document.getElementById("show-button");
-
+let count = 0;
 
 /*FUNZIONI*/
 function addToCart(id) {
@@ -158,8 +158,6 @@ function addToCart(id) {
         return cart;
     }
 }
-
-
 
 /*OPERAZIONI*/ 
 buttonShow.addEventListener('click', function() {
@@ -217,21 +215,24 @@ productCatalog.forEach(element => {
     buttonCart.addEventListener('click', function() {
         const id = parseInt(this.dataset.id);
         addToCart(id);
-        console.log(id);
-        return console.log(cart);
+        sum(cart.length, id);
+        return console.log(sum, id);
     });
 })
 
 const navElement = document.getElementById("nav-links");
-console.log(navElement);
-const shopLink = navElement.querySelectorAll('.link:last-child');
-console.log(shopLink.innerHTML)
-console.log(shopLink);
 
-const cartItems = document.getElementById("shopping-cart");
-console.log(cartItems);
+const shopLink = navElement.querySelectorAll('.link:last-child a');
+
+const cartElement = document.getElementById("shopping-cart");
 
 cart.forEach(element => {
-    const countItems = element.length;
+    cartElement.innerText = element.length;
     console.log(countItems);
 })
+
+
+function sum(a, b) {
+    return a + b;
+}
+
