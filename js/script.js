@@ -148,6 +148,7 @@ let active = false;
 const buttonShow = document.getElementById("show-button");
 let count = 0;
 const cartElement = document.getElementById("shopping-cart");
+const detailContent = document.getElementById("details");
 const navElement = document.getElementById("nav-links");
 // const shopLink = navElement.querySelectorAll('.link:last-child a');
 const counter = document.getElementById("count-items");
