@@ -28,6 +28,7 @@
     
     <!--MAIN-->
     <main>
+        <!--intro-->
         <section id="intro" class="text-center">
             <h1>ICON</h1>
             <p>Dove lo stile prende forma. Ogni giorno, un look da icona.</p>    
@@ -36,17 +37,33 @@
             </div>
         </section>
        
-        <section id="product-catalogue" class="bg-secondary d-none">
+        <!--shopping cart-->
+        <section id="details">
+            <div class="d-flex justify-content-between">
                 <h5 class="m-32">Woman/New/Product</h5>
-                <ul id="list-products" class="d-flex flex-wrap"></ul>
+                <div id="shopping-cart" class="m-32 d-none">
+                    <h5>
+                        <a href="/#total-price" class="btn p-8">
+                        Hai
+                        <span id="count-items">0</span>
+                        nel carrello
+                        </a>
+                    </h5>
+                    
+                </div>
+            </div>
         </section>
-    
-        <section id="shopping-cart">
-            <span id="count-items"></span>
+
+        <!--catalogo-->
+        <section id="product-catalogue" class="bg-secondary d-none">    
+            <ul id="list-products" class="d-flex flex-wrap"></ul>
         </section>
-    
-        <section id="total price">
-    
+
+        <!--riepilogo-->
+        <section id="total-price" class="m-32 d-none">
+            <h4>Total</h4>
+            <ul id="riepilogue">
+            </ul>
         </section>
     </main>
     

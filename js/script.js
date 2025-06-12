@@ -17,11 +17,11 @@ let navLinks = [
         title: "Vai a contact",
         url: "./contact.html"
     },
-    {
-        linkName: "shop",
-        title: "Vai al carrello",
-        url: "./carrello.html"
-    },
+    // {
+    //     linkName: "shop",
+    //     title: "Vai al carrello",
+    //     url: "/#total-price"
+    // },
 ]
 const productCatalog = [
     {
@@ -137,7 +137,7 @@ const productCatalog = [
         description: "Slim fit stretch denim jeans with 5 pockets.",
         path: "./assets/img/08.png"
     },
-    
+
 ];
 const ulListLink = document.getElementById('nav-links');
 ulListLink.className = "d-flex gap-8";
@@ -147,30 +147,92 @@ let cart = [];
 let active = false;
 const buttonShow = document.getElementById("show-button");
 let count = 0;
+const cartElement = document.getElementById("shopping-cart");
+const navElement = document.getElementById("nav-links");
+// const shopLink = navElement.querySelectorAll('.link:last-child a');
+const counter = document.getElementById("count-items");
+const summaryElement = document.getElementById('riepilogue');
+const total = document.getElementById('total-price');
 
 /*FUNZIONI*/
 function addToCart(id) {
-    const product = productCatalog.find(element => element.id === id );
-    if(!product) {
+    const product = productCatalog.find(element => element.id === id);
+    if (!product) {
         return;
     } else {
-        cart.push(product);
+        cart.push({ product });
         return cart;
     }
 }
 
-/*OPERAZIONI*/ 
-buttonShow.addEventListener('click', function() {
-    if(active !== false) {
+function updateItems() {
+    counter.innerText = cart.length;
+    return counter;
+}
+
+function summaryCart() {
+    summaryElement.innerHTML = '';
+    const totalPriceSection = document.getElementById('total-price');
+
+    // Nasconde il bottone se presente
+    const checkoutBtn = document.getElementById('checkout-button');
+    if (checkoutBtn) checkoutBtn.classList.add('d-none');
+
+    if (cart.length === 0) {
+        summaryElement.innerHTML = '<li>Carrello vuoto</li>';
+        return;
+    }
+
+    let total = 0;
+
+    cart.forEach(({ product }) => {
+        const liInCart = document.createElement("li");
+        liInCart.innerText = `${product.name} - ${product.price.toFixed(2)} €`;
+        summaryElement.appendChild(liInCart);
+        total += product.price;
+    });
+
+    const totalElement = document.createElement("li");
+    totalElement.style.fontWeight = "bold";
+    totalElement.innerText = `Totale: ${total.toFixed(2)} €`;
+    summaryElement.appendChild(totalElement);
+
+    // Mostra il pulsante solo se il carrello ha elementi
+    if (!checkoutBtn) {
+        const checkoutButton = document.createElement('button');
+        checkoutButton.id = 'checkout-button';
+        checkoutButton.className = 'btn p-8';
+        checkoutButton.innerText = 'Procedi al pagamento';
+        totalPriceSection.appendChild(checkoutButton);
+    } else {
+        checkoutBtn.classList.remove('d-none');
+    }
+}
+
+function emptyCart() {
+    cart = [];
+    updateItems();
+    summaryCart();
+}
+
+/*OPERAZIONI*/
+
+
+buttonShow.addEventListener('click', function () {
+    if (active !== false) {
         catalogue.classList.remove("d-none");
+        cartElement.classList.remove("d-none");
         buttonShow.innerText = 'Hide All';
+        console.log(cartElement);
         return active = false;
-    } else { 
+    } else {
         buttonShow.innerText = 'Show All';
+        cartElement.classList.add("d-none");
         catalogue.classList.add("d-none");
         return active = true;;
     }
 });
+
 
 
 navLinks.forEach(element => {
@@ -180,7 +242,7 @@ navLinks.forEach(element => {
     aElement.innerText = element.linkName;
     aElement.href = element.url;
     aElement.title = element.title;
-    aElement.classList = "cursor";
+    aElement.classList.add = "cursor";
     liElement.append(aElement);
     ulListLink.append(liElement);
 });
@@ -212,21 +274,56 @@ productCatalog.forEach(element => {
     liElement.append(divElement);
     ulListProducts.append(liElement);
 
-    buttonCart.addEventListener('click', function() {
-        const id = parseInt(this.dataset.id);
+    buttonCart.addEventListener('click', function () {
+        const id = parseInt(this.dataset.id, 10);
         addToCart(id);
         updateItems();
     });
 })
 
-const navElement = document.getElementById("nav-links");
+cartElement.addEventListener('click', () => {
+    summaryCart();
 
-const shopLink = navElement.querySelectorAll('.link:last-child a');
+    catalogue.classList.add('d-none');
 
-const cartElement = document.getElementById("shopping-cart");
+    total.classList.remove('d-none');
 
+    // Aggiunta pulsanti solo se non già presenti
+    // if (!document.getElementById('checkout-button')) {
+    //     const checkoutButton = document.createElement('button');
+    //     checkoutButton.id = 'checkout-button';
+    //     checkoutButton.className = 'btn p-8';
+    //     checkoutButton.innerText = 'Procedi al pagamento';
+    //     total.appendChild(checkoutButton);
+    // }
 
-function updateItems() {
-    const counter = document.getElementById("count-items");
-    counter.innerText = cart.length;
-}
+    if (!document.getElementById('empty-cart-button')) {
+        const emptyButton = document.createElement('button');
+        emptyButton.id = 'empty-cart-button';
+        emptyButton.className = 'btn p-8';
+        emptyButton.innerText = 'Svuota carrello';
+        emptyButton.addEventListener('click', emptyCart);
+        total.appendChild(emptyButton);
+    }
+
+    if (!document.getElementById('go-catalogue-button')) {
+        const goCatalogue = document.createElement('button');
+        goCatalogue.id = 'go-catalogue-button';
+        goCatalogue.className = 'btn p-8';
+        goCatalogue.innerText = 'Torna al catalogo';
+
+        goCatalogue.addEventListener('click', () => {
+            total.classList.add('d-none');
+            catalogue.classList.remove('d-none');
+
+            // Rimuove i bottoni dal DOM (opzionale, se vuoi rigenerarli ogni volta)
+            ['checkout-button', 'empty-cart-button', 'go-catalogue-button'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.remove();
+            });
+        });
+
+        total.appendChild(goCatalogue);
+    }
+})
+
