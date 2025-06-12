@@ -1,28 +1,32 @@
 'use strict';
-
-/*VARIABILI*/
-let navLinks = [
+const navLinks = [
     {
         linkName: "home",
         title: "Vai in home",
-        url: "./index.html"
+        url: "./index.html",
+        quantity: '',
     },
     {
         linkName: "about",
         title: "Vai a about",
-        url: "./about.html"
+        url: "./about.html",
+        quantity: '',
     },
     {
         linkName: "contact",
         title: "Vai a contact",
         url: "./contact.html"
+        
     },
     // {
     //     linkName: "shop",
     //     title: "Vai al carrello",
     //     url: "/#total-price"
     // },
-]
+];
+
+/*VARIABILI*/
+
 const productCatalog = [
     {
         id: 1,
@@ -139,6 +143,7 @@ const productCatalog = [
     },
 
 ];
+
 const ulListLink = document.getElementById('nav-links');
 ulListLink.className = "d-flex gap-8";
 const ulListProducts = document.getElementById('list-products');
@@ -183,7 +188,6 @@ function summaryCart() {
         summaryElement.innerHTML = '<li>Carrello vuoto</li>';
         return;
     }
-
     let total = 0;
 
     cart.forEach(({ product }) => {
@@ -218,7 +222,6 @@ function emptyCart() {
 
 /*OPERAZIONI*/
 
-
 buttonShow.addEventListener('click', function () {
     if (active !== false) {
         catalogue.classList.remove("d-none");
@@ -233,8 +236,6 @@ buttonShow.addEventListener('click', function () {
         return active = true;;
     }
 });
-
-
 
 navLinks.forEach(element => {
     let liElement = document.createElement("li");
@@ -284,19 +285,8 @@ productCatalog.forEach(element => {
 
 cartElement.addEventListener('click', () => {
     summaryCart();
-
     catalogue.classList.add('d-none');
-
     total.classList.remove('d-none');
-
-    // Aggiunta pulsanti solo se non già presenti
-    // if (!document.getElementById('checkout-button')) {
-    //     const checkoutButton = document.createElement('button');
-    //     checkoutButton.id = 'checkout-button';
-    //     checkoutButton.className = 'btn p-8';
-    //     checkoutButton.innerText = 'Procedi al pagamento';
-    //     total.appendChild(checkoutButton);
-    // }
 
     if (!document.getElementById('empty-cart-button')) {
         const emptyButton = document.createElement('button');
@@ -327,4 +317,3 @@ cartElement.addEventListener('click', () => {
         total.appendChild(goCatalogue);
     }
 })
-
